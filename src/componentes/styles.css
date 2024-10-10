@@ -1,0 +1,40 @@
+.navbar{
+    background-color: #E62C53;
+}
+
+.buttonNav{
+    margin-left: 20px;
+    margin-right: 20px;
+    color: #FEFEFA;
+    padding: 15px 20px;
+    text-decoration: none;
+}
+
+.buttonNav:hover{
+    background-color: #12130F;
+    border-radius: 25px;
+}
+
+.logoCarrito {
+    max-width: 40px;
+    max-height: 40px;
+}
+
+.logout{
+    max-width: 40px;
+    max-height: 40px;
+}
+
+.user{
+    max-width: 40px;
+    max-height: 40px;
+}
+
+.logos{
+    cursor: pointer;
+    float: right;
+    background-color: transparent;
+    border: 0;
+    padding: 15px 20px;
+}
+

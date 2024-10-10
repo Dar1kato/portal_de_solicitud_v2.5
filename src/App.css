@@ -1,0 +1,337 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif+Caption:ital@0;1&display=swap');
+
+.pt-serif-caption-regular {
+    font-family: "PT Serif Caption", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+  
+.pt-serif-caption-regular-italic {
+    font-family: "PT Serif Caption", serif;
+    font-weight: 400;
+    font-style: italic;
+}
+
+html {
+    overflow: hidden;
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    overflow: auto;
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; 
+}
+
+/* General */
+* {
+    margin: 0;
+    
+}
+
+.main {
+    background-color: grey;
+    height: 100%;
+}
+
+.bienvenidaImagen {
+    position: relative;
+}
+
+.bienvenidaImagen img {
+    max-height: 1000px;
+    max-width: 100%;
+}
+
+.bienvenidaTexto {
+    position: absolute;
+    top: 50px;
+    left: 20px;
+    padding-right: 100px;
+    border-right: 3px solid white;
+}
+
+.bienvenidaTexto h1 {
+    font-size: 100px;
+    color:white;
+}
+
+.bienvenidaTexto p {
+    padding-top: 20px;
+    font-size: 30px;
+    color: white;
+    padding-left: 15px;
+}
+
+.logIn {
+    position: absolute;
+    right: 480px;
+    top: 70px;
+}
+
+.logIn {
+    position: absolute;
+    align-items: left;
+    color: white;
+    display: grid;
+}
+
+.logIn label {
+    padding-bottom: 5px;  
+    padding-top: 10px;
+}
+
+
+/* Formatos para el Buscador */
+.buscador {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    display: block;
+    background-color: white;
+    top: 0px;
+    position: sticky;
+    z-index: 99;
+}
+
+.buscador Select {
+    z-index: 999;
+}
+
+
+/* Formatos para el listado de los productos */
+.display {
+    display: grid;
+    gap: 1px;
+    grid-template-columns: repeat(4, 1fr);
+    border: 1px solid black;
+    align-items: center;
+}
+
+.display div{
+    max-width: 30vh;
+    min-height: 25vh;
+    position: relative;
+    border: 1px solid black;
+    margin: 10px;
+    padding: 40px;
+    font-size: large;
+    box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.8);
+}
+
+.display button {
+    position: absolute;
+    bottom: 0%;
+    right: 10px;
+    transform: translateY(-45%);
+    padding: 8px;
+    font-size: large;
+    border: 1.5px black solid;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.display button:active {
+    border: green solid 1.5px;
+    color: green;
+    background-color: rgb(217, 255, 217);
+}
+
+.displayItem {
+    transition: transform .2s;
+}
+
+.displayItem img{
+    margin: 0 auto;
+    display: block;
+    max-width: 18vh;
+    max-height: 18vh;
+}
+
+.displayItem:hover {
+    transform: scale(1.05);
+}
+
+.display .noMatch {
+    padding: 20px;
+}
+
+/* Formatos para la cabecera y el carrito */
+header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: none;
+    overflow: hidden;
+    background-color: rgb(110, 98, 98);
+    border: 0;
+    margin: 0;
+    color: white;
+    border-bottom: 3px solid black;
+    padding: 5px;
+}
+
+header .titulo {
+    font-family: serif;
+    display: flex;
+    align-items: center;
+    margin: 10px;
+}
+
+header .titulo img {
+    padding-right: 20px;
+    width: 100px;
+}
+
+header img {
+    display: inline;
+    width: 100px;
+    height: 100%;
+    border: 0;
+    margin: 0;
+    justify-content: center;
+}
+
+header .carrito {
+    display: flex;
+    float: right;
+    width: 60px;
+    height: 40px;
+    margin: 10px;
+}
+
+header .abrirCarrito {
+    cursor: pointer;
+    float: right;
+    background-color: transparent;
+    border: 0;
+    
+}
+
+header .logoCarrito {
+    width: 80px;
+    height: 80px;
+}
+
+.carrito {
+    height: 100%;
+    width: 0; /* Inicia cerrado */
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    right: 0;
+    overflow-x: hidden;
+    padding-top: 20px;
+    transition: width 0.5s ease; /* Transición suave del ancho */
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    border-left: solid black 3px;
+}
+
+.carrito h1 {
+    color: rgba(238,58,67,255);
+    margin: 5px;
+}
+
+.carrito .cerrarCarrito {
+    background-color: transparent;
+    color: rgba(238,58,67,255);
+    border: 0;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.carrito .contenidoCarrito {
+    flex: 1;
+    overflow-y: auto;
+    padding: 10px;
+}
+
+
+.carrito .continuarPedidoBoton {
+    bottom: 10px;
+    left: 50%;
+    height: 100px;
+    max-height: 100px;
+    cursor: pointer;
+    background-color: rgba(238,58,67,255);
+    color: white;
+    border: 0;
+    font-size: 18px;
+    white-space: nowrap;
+}
+
+.productoEnCarrito {
+    list-style: none;
+    border: solid 1px black;
+    padding: 10px;
+    margin: 10px;
+    color: rgba(238,58,67,255);
+    white-space: nowrap;
+}
+
+.productoEnCarrito button {
+    display: flex;
+    float: right;
+}
+
+.abrirCarrito {
+    display: flex;
+    float: right;
+}
+
+/* Formatos para el menú de paginación */
+
+.paginacion {
+    display: flex;
+    flex-direction: row; 
+    align-items: center; 
+    justify-content: center;
+    padding: 5px 10px;
+    border: 1px solid black;
+}
+
+.paginacion button {
+    margin: 1px 5px;
+    background-color: white;
+}
+
+/* Formatos para el buscador */
+.buscador {
+    border: solid 1px black;
+    padding: 12px;
+}
+
+input[type=text] {
+    width: 49%;
+    padding: 6px 10px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 1.5px solid black;
+    border-radius: 5px;
+}
+
+/* Formatos para el Menú desplegable */
+.menuFiltrado {
+    cursor: pointer;
+    background-color: white;
+    border: 1.5px solid black;
+    border-radius: 5px;
+}
+
+
+/* Formatos para el footer */
+footer {
+    background-color: rgba(238,58,67,255);
+    padding: 10px;
+    bottom: 0;
+    position: sticky;
+    border: 1px solid black;
+}
+
+footer i {
+    padding-right: 10px;
+}
+
