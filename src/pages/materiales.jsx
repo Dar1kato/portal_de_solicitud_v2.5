@@ -16,7 +16,7 @@ function Materials({ bag, setBag }) {
   const lastPostIndex = currentPage * postPerPage;
   const firstPostIndex = lastPostIndex - postPerPage;
   const [carritoWidth, setCarritoWidth] = useState('0');
-  
+  const [gridType,  setGridtype] = useState(true);
 
   const filtro = useMemo(() => {
     return Items.filter((item) => {
@@ -58,6 +58,10 @@ function Materials({ bag, setBag }) {
     window.location.href = '/app';
   }
 
+  function toggleListType() {
+    gridType ? setGridtype(false) : setGridtype(true);
+  }
+
   return (
     <div>
       <Cabecera abrirCarrito={abrirCarrito} hanldeLogOut={handleLogOut}/>
@@ -68,12 +72,13 @@ function Materials({ bag, setBag }) {
         </form>
         <br />
         <Dropdown selectedValue={selectedValue} setSelectedValue={setSelectedValue} />
+        <img src={gridType ? "/list.png" : "/grid.png"} className="toggle" onClick={toggleListType}/>
       </div>
 
       <br />
 
       {/* Aqui estan los materiales*/}
-      <ListDisplay currentPost={currentPost} agregarPedido={agregarPedido} filtro={filtro} />
+      <ListDisplay currentPost={currentPost} agregarPedido={agregarPedido} filtro={filtro} gridType={gridType}/>
 
       {/* Aqui esta la paginación */}
       <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} postPerPage={postPerPage} lastPostIndex={lastPostIndex} filtro={filtro} />

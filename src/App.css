@@ -99,8 +99,13 @@ body {
 }
 
 
-/* Formatos para el listado de los productos */
-.display {
+
+
+
+
+
+/* Formatos para el listado de los productos (en Grid) */
+.grid_display {
     display: grid;
     gap: 1px;
     grid-template-columns: repeat(4, 1fr);
@@ -108,7 +113,7 @@ body {
     align-items: center;
 }
 
-.display div{
+.grid_display div{
     max-width: 30vh;
     min-height: 25vh;
     position: relative;
@@ -119,7 +124,7 @@ body {
     box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.8);
 }
 
-.display button {
+.grid_display button {
     position: absolute;
     bottom: 0%;
     right: 10px;
@@ -131,30 +136,73 @@ body {
     cursor: pointer;
 }
 
-.display button:active {
+.grid_display button:active {
     border: green solid 1.5px;
     color: green;
     background-color: rgb(217, 255, 217);
 }
 
-.displayItem {
+.grid_displayItem {
     transition: transform .2s;
 }
 
-.displayItem img{
+.grid_displayItem img{
     margin: 0 auto;
     display: block;
     max-width: 18vh;
     max-height: 18vh;
 }
 
-.displayItem:hover {
+.grid_displayItem:hover {
     transform: scale(1.05);
 }
 
-.display .noMatch {
+.grid_display .noMatch {
     padding: 20px;
 }
+
+
+
+
+/* Formatos para el listado de los productos (en Lista) */
+.list_display {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.list_displayItem{
+    border: solid black 1px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    padding: 10px;
+}
+
+.list_displayItem img {
+    max-width: 100px;
+    max-height: 100px;
+}
+
+.list_display button {
+    float: right;
+}
+
+.list_displayItem b {
+    margin-left: 10px;
+    font-size: larger;
+}
+
+.toggle {
+    margin-left: 20px;
+    width: 20px;
+    height: 20px;
+}
+
+
+
+
 
 /* Formatos para la cabecera y el carrito */
 header {
@@ -214,6 +262,10 @@ header .logoCarrito {
     height: 80px;
 }
 
+
+
+
+/* Formato para el Carrito */
 .carrito {
     height: 100%;
     width: 0; /* Inicia cerrado */
@@ -249,7 +301,6 @@ header .logoCarrito {
     padding: 10px;
 }
 
-
 .carrito .continuarPedidoBoton {
     bottom: 10px;
     left: 50%;
@@ -282,8 +333,10 @@ header .logoCarrito {
     float: right;
 }
 
-/* Formatos para el menú de paginación */
 
+
+
+/* Formatos para el menú de paginación */
 .paginacion {
     display: flex;
     flex-direction: row; 
@@ -297,6 +350,9 @@ header .logoCarrito {
     margin: 1px 5px;
     background-color: white;
 }
+
+
+
 
 /* Formatos para el buscador */
 .buscador {
