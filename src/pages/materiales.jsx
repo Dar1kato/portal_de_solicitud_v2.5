@@ -7,7 +7,7 @@ import Pagination from "../componentes/paginations";
 import Cabecera from "../componentes/cabecera";
 import Bolsa from "../componentes/bolsa";
 
-function Materials({ bag, setBag }) {
+function Materials({ bag, setBag, email }) {
   const [Items, setItems] = useState(Object.values(datos));
   const [query, setQuery] = useState("");
   const [selectedValue, setSelectedValue] = useState('');
@@ -17,6 +17,7 @@ function Materials({ bag, setBag }) {
   const firstPostIndex = lastPostIndex - postPerPage;
   const [carritoWidth, setCarritoWidth] = useState('0');
   const [gridType,  setGridtype] = useState(true);
+  const [userMail,  setUserMail] = useState(email);
 
   const filtro = useMemo(() => {
     return Items.filter((item) => {
@@ -62,6 +63,7 @@ function Materials({ bag, setBag }) {
     gridType ? setGridtype(false) : setGridtype(true);
   }
 
+  console.log(userMail);
   return (
     <div>
       <Cabecera abrirCarrito={abrirCarrito} hanldeLogOut={handleLogOut}/>
@@ -82,6 +84,7 @@ function Materials({ bag, setBag }) {
 
       {/* Aqui esta la paginación */}
       <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} postPerPage={postPerPage} lastPostIndex={lastPostIndex} filtro={filtro} />
+      <footer></footer>
     </div>
   );
 }

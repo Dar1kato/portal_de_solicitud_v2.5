@@ -50,7 +50,7 @@ function App() {
 
       <Routes>
         {isLoggedIn ? (
-          <Route path="/" element={<Materials bag={bag} setBag={setBag} />} />
+          <Route path="/" element={<Materials bag={bag} setBag={setBag} email={email}/>} />
         ) : (
           <Route path="/" element={
             <div className="main">
@@ -62,9 +62,9 @@ function App() {
                 </div>
                 <form class="logIn" onSubmit={handleLogin}>
                   <label>Correo electrónico:</label>
-                  <input type="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                  <input type="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} required/>
                   <label>Contraseña:</label>
-                  <input type="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                  <input type="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} required/>
                   <br></br>
                   <button type="submit">Iniciar sesión</button>
                   </form>

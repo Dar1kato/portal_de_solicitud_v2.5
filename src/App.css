@@ -383,7 +383,6 @@ footer {
     background-color: rgba(238,58,67,255);
     padding: 10px;
     bottom: 0;
-    position: sticky;
     border: 1px solid black;
 }
 
