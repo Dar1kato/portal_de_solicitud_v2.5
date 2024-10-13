@@ -2,40 +2,37 @@ import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import './App.css';
 import { Toaster } from "sonner";
-import Bolsa from "./componentes/bolsa";
-import Cabecera from "./componentes/cabecera";
 import Materials from './pages/materiales'; 
 import Doubts from './pages/dudas'; 
-import { Navigate } from "react-router-dom";
+
 
 function App() {
-  const [bag, setBag] = useState([]);
-  const [carritoWidth, setCarritoWidth] = useState('300');
+  //*--------------------------------------- useState por componente -----------------------------------------------
+  // Carrito
+  const [bag, setBag] = useState([]);                         // Define el contenido del carrito en una lista     
 
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  // Confirmación
+  const [email, setEmail] = useState('');                     // Define el email del usuario
 
-  function abrirCarrito() {
-    setCarritoWidth('300px');
-  }
 
-  function cerrarCarrito() {
-    setCarritoWidth('0');
-  }
+  const [password, setPassword] = useState('');               // Define la contraseña del usuario
+  const [isLoggedIn, setIsLoggedIn] = useState(false);        // Define el estado del LogIn del usuario
 
-  function eliminarDeCarrito(index) {
-    setBag(bag.filter((_, i) => i !== index));
-  }
+  //*---------------------------------------------------------------------------------------------------------------
 
-  function continuarPedido() {
-    alert("El Dev aún no implementa esta función :(");
-  }
 
+  //*------------------------------------------ Funciones y lógicas ------------------------------------------------
+  
+  // Función para cambiar el estatus de logIn del usuario
   function handleLogin(e) {
     e.preventDefault();
     setIsLoggedIn(true);
   }
+
+  //*---------------------------------------------------------------------------------------------------------------
+
+
+  //*------------------------------------------ JSX de la Página ---------------------------------------------------
 
   return (
     <Router>
@@ -45,8 +42,6 @@ function App() {
         <img src="/iberoPueblaImg.png" alt="Ibero Puebla" /><h1>Portal de Solicitud de Insumos</h1>
         </div>
       </header>
-
-      <Bolsa bag={bag} cerrarCarrito={cerrarCarrito} carritoWidth={carritoWidth} eliminarDeCarrito={eliminarDeCarrito} continuarPedido={continuarPedido} />
 
       <Routes>
         {isLoggedIn ? (
@@ -77,6 +72,7 @@ function App() {
       </Routes>
     </Router>
   );
+  //*---------------------------------------------------------------------------------------------------------------
 }
 
 export default App;

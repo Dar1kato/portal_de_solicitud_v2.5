@@ -2,7 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom'; // Importa Link
 import './styles.css';
 
-function Cabecera({ abrirCarrito, hanldeLogOut }) {
+function Cabecera({ abrirCarrito }) {
+  //*-------------------------------------------- JSX del componente ------------------------------------------------
   return (
     <header>
       <div className="titulo">
@@ -21,7 +22,7 @@ function Cabecera({ abrirCarrito, hanldeLogOut }) {
           <img className="logoCarrito" src="bag.png" alt="Carrito" />
         </button>
         <button className="logos">
-          <img className="logout" src="logout.png" alt="Salir" onClick={hanldeLogOut}/>
+          <img className="logout" src="logout.png" alt="Salir"/>
         </button>
         <button className="logos">
           <img className="user" src="user.png" alt="Usuario" />
@@ -29,6 +30,8 @@ function Cabecera({ abrirCarrito, hanldeLogOut }) {
       </div>
     </header>
   );
+  //*------------------------------------------------------------------------------------------------------------
+
 }
 
 export default Cabecera;

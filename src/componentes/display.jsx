@@ -1,9 +1,8 @@
 import React from 'react';
 
 function ListDisplay({ currentPost, agregarPedido, filtro, gridType, listType }) {
+  //*--------------------------------- JSX del componente: Display tipo "Grid" -------------------------------------
   if (gridType) {
-    console.log("Grid Dislpay correcto");
-
     return (
       <div className="grid_display">
       {currentPost.map((item, index) => (
@@ -17,9 +16,11 @@ function ListDisplay({ currentPost, agregarPedido, filtro, gridType, listType })
       {filtro.length === 0 && <p className="noMatch">No se encontraron productos</p>}
     </div>
     );
-  } else {
-    console.log("List Dislpay correcto");
+  //*----------------------------------------------------------------------------------------------------------------
 
+
+  //*--------------------------------- JSX del componente: Display tipo "Lista" -------------------------------------
+  } else {
     return (
       <div className="list_display">
         {currentPost.map((item) => ( // Map de los items por lineas, con su boton correspondiente
@@ -32,6 +33,8 @@ function ListDisplay({ currentPost, agregarPedido, filtro, gridType, listType })
       </div>
     )
   }
+  //*----------------------------------------------------------------------------------------------------------------
+
 }
 
 export default ListDisplay;

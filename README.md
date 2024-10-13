@@ -2,9 +2,9 @@
 
 Ingeniería en Sistemas Computacionales
 
-# Autor #
+# Autores #
 
-Daniel Peña Cruz
+Naomi y Daniel
 
 Este es un proyecto para el Servicio Becario del departamento de Ing. en Sistemas de la Ibero Puebla.
 
@@ -19,8 +19,6 @@ Se utilizó principalmente React.js para la interactividad de la página, CSS pa
 # Pendiente #
 
 1- Implementar el query a la base de datos con la información de todos los productos a solicitar.
-
-2- Conectar la página principal con una segunda página que contenga un formulario. Este formulario servirá para solicitar la información necesaria al alumno solicitante y terminar con la solicitud.
 
 
 # TODOS LOS DERECHOS RESEVADOS #
