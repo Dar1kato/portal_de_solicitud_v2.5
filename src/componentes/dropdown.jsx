@@ -1,17 +1,20 @@
 import React from 'react';
 
-function Dropdown({ selectedValue, setSelectedValue }) {
+function Dropdown({ selectedValue, setSelectedValue, data }) {
   //*---------------------------------------------- Variables ---------------------------------------------------
 
   // Variable que guarda todas las opciones para el menu desplegable
-  //! Esta variable deberá ser obtenida directamente de la base da datos. Para fines de prueba, la lista se mantiene dentro del código
-  const options = [
-    { value: '', label: '...' },
-    { value: 'Ingeniería en Sistemas', label: "Ingeniería en Sistemas" },
-    { value: 'Electrónica', label: "Electrónica" },
-    { value: 'Química', label: "Química" },
-    { value: 'Mecatrónica', label: "Mecatrónica" },
-  ];
+  const options = Array.from(new Set(Object.values(data).map(option => option.categoria))) // Se utiliza un set para evitar repeticiones
+  .map(categoria => ({
+    value: categoria,
+    label: categoria
+  }));
+
+  // Se añade una opción default para el menu desplegable
+  options.unshift({
+    value: '',
+    label: '...'
+  });
   //*--------------------------------------------------------------------------------------------------------------
 
 
