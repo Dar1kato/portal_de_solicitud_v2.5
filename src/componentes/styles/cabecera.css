@@ -1,0 +1,57 @@
+/* Formatos para la cabecera y el carrito */
+header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: none;
+    overflow: hidden;
+    background-color: rgb(110, 98, 98);
+    border: 0;
+    margin: 0;
+    color: white;
+    border-bottom: 3px solid black;
+    padding: 5px;
+}
+
+header .titulo {
+    font-family: serif;
+    display: flex;
+    align-items: center;
+    margin: 10px;
+}
+
+header .titulo img {
+    padding-right: 20px;
+    width: 100px;
+}
+
+header img {
+    display: inline;
+    width: 100px;
+    height: 100%;
+    border: 0;
+    margin: 0;
+    justify-content: center;
+}
+
+header .carrito {
+    display: flex;
+    float: right;
+    width: 60px;
+    height: 40px;
+    margin: 10px;
+}
+
+header .abrirCarrito {
+    cursor: pointer;
+    float: right;
+    background-color: transparent;
+    border: 0;
+    
+}
+
+header .logoCarrito {
+    width: 80px;
+    height: 80px;
+}

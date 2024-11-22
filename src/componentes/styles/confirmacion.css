@@ -1,0 +1,62 @@
+/* Confirmacion */
+.confirmacion {
+    position: absolute;
+    z-index: 999;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border: 2px solid #E62C53;
+    width: 90%;
+    height: 90%;
+}
+
+.cerrarConfirmar {
+    float: right;
+}
+
+.confirmacion hr {
+    margin: 20px 0px;
+}
+
+.confirmacion h1, h3 {
+    color: red;
+    padding: 10px 0;
+}
+
+.confirmacion br {
+    padding: 10px;
+}
+
+.confirmacion input {
+    margin: 10px 0;
+}
+
+.confirmacion label {
+    margin: 10px 0;
+}
+
+.confirmacion .confirmarPedido {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 400px;
+    height: 80px;
+    color: #E62C53;
+}
+
+.confirmarPedido:hover {
+    cursor: pointer;
+}
+
+.pedidoFinal li {
+    padding: 5px 0;
+}
+
+.disclaimer {
+    position: absolute;
+    font-size: x-small;
+    bottom: 0;
+
+}

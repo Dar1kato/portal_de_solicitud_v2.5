@@ -1,5 +1,4 @@
-import React, { useMemo, useState } from "react";
-import datos from '../datos.json';
+import React, { useMemo, useState, useEffect } from "react";
 import { toast } from "sonner"; // Importamos solo el toast porque el Toaster ya esta en App
 
 // Componentes de la Página
@@ -9,13 +8,23 @@ import Pagination from "../componentes/paginations";      // Paginación
 import Cabecera from "../componentes/cabecera";           // Cabecera
 import Bolsa from "../componentes/bolsa";                 // Bolsa (también llamado "Carrito")
 import Confirmacion from "../componentes/confirmacion";   // Confirmación
+import useFirebaseData from "../useFirebasedata";
 
 function Materials({ bag, setBag, email }) {
   //*--------------------------------------- useState por componente -----------------------------------------------
 
   // Display
-  const [Items, setItems] = useState(Object.values(datos)); // Define los items mostrados en la pagina
-  const [query, setQuery] = useState("");                   // Define el query de la busqueda de items
+  const [Items, setItems] = useState({});  // Define los items mostrados en la pagina
+  const [query, setQuery] = useState("");  // Define el query de la busqueda de items
+
+  const { data: firebaseData, loading, error } = useFirebaseData('prestamo');
+
+  // Actualización de los datos en tiempo real
+  useEffect(() => {
+    if (firebaseData) {
+      setItems(firebaseData);
+    }
+  }, [firebaseData]);
 
   // Dropdown
   const [selectedValue, setSelectedValue] = useState('');   // Define el valor seleccionado (dropdown)
@@ -43,12 +52,23 @@ function Materials({ bag, setBag, email }) {
 
   // Filtro de los items mostrados en la página (por el buscador y por categorias)
   const filtro = useMemo(() => {
-    return Items.filter((item) => {
+    return Object.entries(Items).filter(([key, item]) => {
+      // Bandera para verificar que el item exista
+      if (!item || !item.nombre) return false;
+      
+      // Conversión del query y los datos a minusculas, para facilidad de comparación
+      const nombreEnMinusculas = item.nombre.toString().toLowerCase();
+      const queryEnMinusculas = query.toLowerCase();
+      
+
       return (
-        item.nombre.toLowerCase().includes(query.toLowerCase()) &&
+        nombreEnMinusculas.includes(queryEnMinusculas) &&
         (selectedValue === "" || item.categoria === selectedValue)
       );
-    }, [Items, query, selectedValue]);
+    }).map(([key, item]) => ({
+      ...item,
+      id: key
+    }));
   }, [Items, query, selectedValue]);
 
   const currentPost = filtro.slice(firstPostIndex, lastPostIndex); // Define el contenido del post actual, con los datos filtrados
@@ -91,11 +111,11 @@ function Materials({ bag, setBag, email }) {
       
       <Bolsa bag={bag} cerrarCarrito={cerrarCarrito} carritoWidth={carritoWidth} eliminarDeCarrito={eliminarDeCarrito} email={email} open={open} setOpen={setOpen}/>
       <div className="buscador">
-        <form className="buscar_texto" type="search">
+        <form className="buscar_texto" type="search" onSubmit={(e) => e.preventDefault()}>
           <input placeholder="Buscar..." type="text" onChange={(e) => setQuery(e.target.value)} />
         </form>
         <br />
-        <Dropdown selectedValue={selectedValue} setSelectedValue={setSelectedValue} />
+        <Dropdown selectedValue={selectedValue} setSelectedValue={setSelectedValue} data={Items}/>
         <img src={gridType ? "/list.png" : "/grid.png"} className="toggle" onClick={toggleListType}/>
       </div>
 
