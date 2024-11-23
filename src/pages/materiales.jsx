@@ -31,7 +31,7 @@ function Materials({ bag, setBag, email }) {
 
   // Paginación
   const [currentPage, setCurrentPage] = useState(1);        // Define el numero de la página actual
-  const [postPerPage, setPostPerPAge] = useState(16);       // Define la cantidad de items mostrados por página
+  const [postPerPage, setPostPerPAge] = useState(40);       // Define la cantidad de items mostrados por página
   const lastPostIndex = currentPage * postPerPage;          // Define el index del ultimo post de la página
   const firstPostIndex = lastPostIndex - postPerPage;       // Define el index del primer post de la página
 
