@@ -1,5 +1,4 @@
 //? Este es el servidor de Node Js que maneja el serivico de envio de correos
-//? Daniel no sabe como funciona, pero funciona :/
 //? Cualquier duda sobre el funcionamiento de este archivo, consultarlo con el video tutorial para implementar el envio de correos (Notion/Recursos)
 
 // backend/server.js
