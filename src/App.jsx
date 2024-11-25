@@ -14,7 +14,7 @@ function App() {
   // Confirmación
   const [email, setEmail] = useState('');                     // Define el email del usuario
 
-
+  // Contraseña e inicio de sesion
   const [password, setPassword] = useState('');               // Define la contraseña del usuario
   const [isLoggedIn, setIsLoggedIn] = useState(false);        // Define el estado del LogIn del usuario
 
@@ -31,7 +31,7 @@ function App() {
 
   //*---------------------------------------------------------------------------------------------------------------
 
-
+  
   //*------------------------------------------ JSX de la Página ---------------------------------------------------
 
   return (

@@ -1,105 +1,137 @@
 "use client"
 import React, { useState } from "react";
-import axios from "axios";
 import { toast } from "sonner";
 
 function Confirmacion({ bag, email, open, setOpen }) {
-  //*--------------------------------------- useStates del Componente ---------------------------------------------
+  const [sent, setSent] = useState(false);
+  const [nombre, setNombre] = useState("");
+  const [numControl, setNumControl] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-  const [sent, setSent] = useState(false);              // Define el estatus del envio
-  const [nombre, setNombre] = useState("");             // Define el nombre del solicitante
-  const [numControl, setNumControl] = useState();       // Define el numero de control del solicitante
-  const [isLoading, setIsLoading] = useState(false);    // Define el estatus de carga del proceso de envio 
-  const [error, setError] = useState(null);             // Define el error en el proceso de envio
+  const generateEmailHTML = () => {
+    const itemsList = bag.map(item => `<li>${item}</li>`).join('');
+    return `
+      <div style="font-family: Arial, sans-serif; padding: 20px;">
+        <h2>Confirmación de Pedido</h2>
+        <p><strong>Nombre:</strong> ${nombre}</p>
+        <p><strong>Número de Control:</strong> ${numControl}</p>
+        <p><strong>Correo:</strong> ${email}</p>
+        <h3>Artículos Solicitados:</h3>
+        <ul>${itemsList}</ul>
+      </div>
+    `;
+  };
 
-  //*---------------------------------------------------------------------------------------------------------------
-
-  //*------------------------------------------ Funciones y Lógicas ------------------------------------------------
-
-  // Función para enviar un Correo
-  const handleSubmit = async () => {
-    setIsLoading(true); // Condicion inicial del estatus de carga inicializado a verdadero
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsLoading(true);
     setError(null);
 
-    // Intento de envío de correo
     try {
-      // Inicio de la secuencia de Envio
-      console.log("Inicio de secuencia de Envio");
-
-      // LLamada al metodo POST para realizar el envio con los datos personalizados del correo
-      const response = await axios.post('http://localhost:4000/send-email', {
-
-        // Datos personalizados del correo
-        bag,
-        email,
-        nombre,
-        numControl
+      const response = await fetch('http://localhost:4000/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          to: email,
+          subject: `Solicitud de Material - ${nombre}`,
+          text: `Solicitud de material por ${nombre} (${numControl})`,
+          html: generateEmailHTML()
+        })
       });
 
-      // Se imprime la respuesta del servidor, continua el proceso de envio
-      console.log('Respuesta del servidor:', response.data);
-      console.log("Envio del correo en proceso");
+      const data = await response.json();
 
-    // Catch de errores
-    } catch (error) {
-
-      // Se imprime el error
-      console.error('Error al enviar el correo:', error);
-      setError('Hubo un error al enviar el correo. Por favor, intenta de nuevo.');
-
-      // Feedback al usuario
-      toast.warning("Error al enviar el correo, intente de nuevo")
-
-    // Finalización del Intento de envío
+      if (data.success) {
+        toast.success('¡Pedido enviado correctamente!');
+        setSent(true);
+        setOpen(false);
+      } else {
+        throw new Error(data.message || 'Error al enviar el pedido');
+      }
+    } catch (err) {
+      setError(`Error al enviar el pedido: ${err.message}`);
+      toast.error('Error al enviar el pedido');
     } finally {
-      // Reinicio del estatus de carga
       setIsLoading(false);
-
-      console.log("Secuencia de Envio Terminada!")
-
-      // Feedback al usuario
-      toast.success("¡Pedido Solicitado Exisosamente!")
     }
   };
-  //*------------------------------------------------------------------------------------------------------------------
 
-  //*-------------------------------------------- JSX del componente --------------------------------------------------
+  if (!open) return null;
+  
   return (
-    // Condicional que lee el estado del componente: visible
-    open ? 
     <div className="confirmacion">
-      <button onClick={() => setOpen(false)} className="cerrarConfirmar">x</button>
+      <button 
+        onClick={() => setOpen(false)} 
+        className="cerrarConfirmar"
+        type="button"
+      >
+        x
+      </button>
+      
       <h1>Confirmación del Pedido</h1>
-        <form>
-          <label>Nombre: </label>
-          <input type="Nombre" name="Nombre" value={nombre} onChange={(e) => setNombre(e.target.value)} required/>
-          <br />
-          <label>Numero de Control: </label>
-          <input type="numControl" name="Numero de Control" value={numControl} onChange={(e) => setNumControl(e.target.value)} required/>
-          <br />
-          <label>Correo: </label>{email}
-          <hr />
-          <h3>Pedido:</h3>
-          <div className="pedidoFinal">
-            {bag.map((item) => (
-              <ul>
-                <li>{item}</li>
-              </ul>
-            ))}
-          </div>
-          <hr />
-          <i class="disclaimer">Al solicitar material a la institución, estás automaticamente accediendo a los terminos y condiciones de prestamos</i>
-          <button className="confirmarPedido" onClick={handleSubmit} disabled={isLoading || !nombre || !numControl}>
-              {isLoading ? 'Enviando...' : 'Confirmar Pedido'}
-            </button>
-            {error && <p className="error-message">{error}</p>}
-        </form>
-    </div>
+      
+      <form onSubmit={handleSubmit}>
+        <div className="form-group">
+          <label htmlFor="nombre">Nombre: </label>
+          <input
+            id="nombre"
+            type="text"
+            value={nombre}
+            onChange={(e) => setNombre(e.target.value)}
+            required
+            disabled={isLoading}
+          />
+        </div>
 
-    // Condicional que lee el estado del componente: oculto
-    : null
-  )
-  //*---------------------------------------------------------------------------------------------------------------
+        <div className="form-group">
+          <label htmlFor="numControl">Número de Control: </label>
+          <input
+            id="numControl"
+            type="text"
+            value={numControl}
+            onChange={(e) => setNumControl(e.target.value)}
+            required
+            disabled={isLoading}
+          />
+        </div>
+
+        <div className="form-group">
+          <label>Correo: </label>
+          <span>{email}</span>
+        </div>
+
+        <hr />
+        
+        <h3>Pedido:</h3>
+        <div className="pedidoFinal">
+          <ul>
+            {bag.map((item, index) => (
+              <li key={index}>{item}</li>
+            ))}
+          </ul>
+        </div>
+        
+        <hr />
+        
+        <i className="disclaimer">
+          Al solicitar material a la institución, estás automáticamente aceptando los términos y condiciones de préstamos
+        </i>
+
+        <button 
+          className="confirmarPedido" 
+          type="submit"
+          disabled={isLoading || !nombre || !numControl}
+        >
+          {isLoading ? 'Enviando...' : 'Confirmar Pedido'}
+        </button>
+
+        {error && <p className="error-message">{error}</p>}
+      </form>
+    </div>
+  );
 }
 
 export default Confirmacion;
