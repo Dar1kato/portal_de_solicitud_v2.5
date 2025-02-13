@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { database } from "./firebaseConfig.js";
-import { ref, onValue, off } from "firebase/database";
+import { ref, onValue, off, get } from "firebase/database";
 
 // Custom hook para manejar la lectura de datos de Firebase
 const useFirebaseData = (path) => {
