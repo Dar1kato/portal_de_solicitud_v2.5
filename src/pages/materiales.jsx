@@ -10,6 +10,9 @@ import Bolsa from "../componentes/bolsa";                 // Bolsa (también lla
 import Confirmacion from "../componentes/confirmacion";   // Confirmación
 import useFirebaseData from "../useFirebasedata";
 
+import list from ".//images/list.png";
+import grid from ".//images/grid.png";
+
 function Materials({ bag, setBag, email }) {
   //*--------------------------------------- useState por componente -----------------------------------------------
 
@@ -116,7 +119,7 @@ function Materials({ bag, setBag, email }) {
         </form>
         <br />
         <Dropdown selectedValue={selectedValue} setSelectedValue={setSelectedValue} data={Items}/>
-        <img src={gridType ? "/images/list.png" : "/images/grid.png"} className="toggle" onClick={toggleListType}/>
+        <img src={gridType ? {list} : {grid}} className="toggle" onClick={toggleListType}/>
       </div>
 
       <br />

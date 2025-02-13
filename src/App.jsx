@@ -9,6 +9,7 @@ import { Tooltip } from "react-tooltip";
 
 import iberoPueblaImg from ".//images/iberoPueblaImg.png";
 import fachada from ".//images/fachadaIbero.png";
+import exit from ".//images/logout.png";
 
 function App() {
   //*--------------------------------------- useState por componente -----------------------------------------------
@@ -105,7 +106,7 @@ function App() {
           data-tooltip-place="bottom"
           >
           <button className="logos" onClick={handleLogout}>
-            <img className="logout" src="/images/logout.png" alt="Salir"/>
+            <img className="logout" src={exit} alt="Salir"/>
           </button>
           </a>
         )}
