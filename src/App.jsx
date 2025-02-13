@@ -7,8 +7,8 @@ import Doubts from './pages/dudas';
 import 'react-tooltip/dist/react-tooltip.css'
 import { Tooltip } from "react-tooltip";
 
-import iberoPueblaImg from "/images/iberoPueblaImg.png";
-import fachada from "/images/fachadaIbero.png";
+import iberoPueblaImg from ".//images/iberoPueblaImg.png";
+import fachada from ".//images/fachadaIbero.png";
 
 function App() {
   //*--------------------------------------- useState por componente -----------------------------------------------
