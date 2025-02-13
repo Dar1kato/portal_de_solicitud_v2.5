@@ -92,7 +92,7 @@ function App() {
       <Tooltip id="logOut" />
       <header className="navbar">
         <div className="titulo">
-          <img src={`${process.env.PUBLIC_URL}/iberoPueblaImg.png`} alt="Ibero Puebla" />
+          <img src="/images/iberoPueblaImg.png" alt="Ibero Puebla" />
           <h1>Portal de Solicitud de Insumos</h1>
         </div>
         {isLoggedIn && (
@@ -102,7 +102,7 @@ function App() {
           data-tooltip-place="bottom"
           >
           <button className="logos" onClick={handleLogout}>
-            <img className="logout" src={`${process.env.PUBLIC_URL}/logout.png`} alt="Salir"/>
+            <img className="logout" src="/images/logout.png" alt="Salir"/>
           </button>
           </a>
         )}
@@ -117,7 +117,7 @@ function App() {
             ) : (
               <div className="main">
                 <div className="bienvenidaImagen">
-                  <img src={`${process.env.PUBLIC_URL}/fachadaIbero.png`} alt="Fachada Ibero" />
+                  <img src="/images/fachadaIbero.png" alt="Fachada Ibero" />
                   <div className="bienvenidaTexto">
                     <h1>¡Bienvenido!</h1>
                     <p>Inicia sesión para acceder</p>

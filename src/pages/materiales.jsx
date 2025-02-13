@@ -116,7 +116,7 @@ function Materials({ bag, setBag, email }) {
         </form>
         <br />
         <Dropdown selectedValue={selectedValue} setSelectedValue={setSelectedValue} data={Items}/>
-        <img src={gridType ? "/list.png" : "/grid.png"} className="toggle" onClick={toggleListType}/>
+        <img src={gridType ? "/images/list.png" : "/images/grid.png"} className="toggle" onClick={toggleListType}/>
       </div>
 
       <br />
