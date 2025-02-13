@@ -7,6 +7,9 @@ import Doubts from './pages/dudas';
 import 'react-tooltip/dist/react-tooltip.css'
 import { Tooltip } from "react-tooltip";
 
+import iberoPueblaImg from "/public/images/iberoPueblaImg.png";
+import fachada from "/public/images/fachadaIbero.png";
+
 function App() {
   //*--------------------------------------- useState por componente -----------------------------------------------
   // Carrito
@@ -92,7 +95,7 @@ function App() {
       <Tooltip id="logOut" />
       <header className="navbar">
         <div className="titulo">
-          <img src="/images/iberoPueblaImg.png" alt="Ibero Puebla" />
+          <img src={iberoPueblaImg} alt="Ibero Puebla" />
           <h1>Portal de Solicitud de Insumos</h1>
         </div>
         {isLoggedIn && (
@@ -117,7 +120,7 @@ function App() {
             ) : (
               <div className="main">
                 <div className="bienvenidaImagen">
-                  <img src="/images/fachadaIbero.png" alt="Fachada Ibero" />
+                  <img src={fachada} alt="Fachada Ibero" />
                   <div className="bienvenidaTexto">
                     <h1>¡Bienvenido!</h1>
                     <p>Inicia sesión para acceder</p>
