@@ -22,9 +22,6 @@ function Cabecera({ abrirCarrito }) {
           <img className="logoCarrito" src="bag.png" alt="Carrito" />
         </button>
         <button className="logos">
-          <img className="logout" src="logout.png" alt="Salir"/>
-        </button>
-        <button className="logos">
           <img className="user" src="user.png" alt="Usuario" />
         </button>
       </div>
