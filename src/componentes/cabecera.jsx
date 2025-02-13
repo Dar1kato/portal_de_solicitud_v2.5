@@ -19,10 +19,10 @@ function Cabecera({ abrirCarrito }) {
       </div>
       <div>
         <button className="logos" onClick={abrirCarrito}>
-          <img className="logoCarrito" src="bag.png" alt="Carrito" />
+          <img className="logoCarrito" src={`${process.env.PUBLIC_URL}/bag.png`} alt="Carrito" />
         </button>
         <button className="logos">
-          <img className="user" src="user.png" alt="Usuario" />
+          <img className="user" src={`${process.env.PUBLIC_URL}/user.png`} alt="Usuario" />
         </button>
       </div>
     </header>
